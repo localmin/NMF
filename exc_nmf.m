@@ -1,6 +1,6 @@
 clear
 %make random data
-X = rand( I, J )
+X = rand( I, J );
 % Get size
 [I,J] = size( X );
 

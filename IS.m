@@ -1,7 +1,7 @@
-function [ T, V ] = EU( X, K, itr, I, J )
+function [ T, V ] = IS( X, K, iter )
 
 % Iteration
-for loop=1:itr
+for loop=1:iter
   % create new variables
   tmpT = T;
   tmpV = V;
@@ -11,10 +11,10 @@ for loop=1:itr
       upper = 0;
       lower = 0;
       for j=1:C
-        upper = upper + V(k,j) * X(i,j);
-        lower = lower + V(k,j) * Xh(i,j);
+        upper = upper + (X(i,j)/Xh(i,j))*(V(k,j)/Xh(i,j));
+        lower = lower + V(k,j)/Xh(i,j);
       end
-      nT(i,k) = T(i,k) * upper / lower;
+      nT(i,k) = T(i,k) * sqrt(upper / lower);
     end
   end
   % update V
@@ -23,18 +23,16 @@ for loop=1:itr
       upper = 0;
       lower = 0;
       for i=1:R
-        upper = upper + T(i,k) * X(i,j);
-        lower = lower + T(i,k) * Xh(i,j);
+        upper = upper + (X(i,j)/Xh(i,j))*(T(i,k)/Xh(i,j));
+        lower = lower + T(i,k)/Xh(i,j);
       end
-      nV(k,j) = V(k,j) * upper / lower;
+      nV(k,j) = V(k,j) * sqrt(upper / lower);
     end
   end
   % replace current variables to new ones
   V = nV; T = nT;
   % update \hat{X}
   Xh = T * V;
-
-
   
 end
 
