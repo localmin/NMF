@@ -1,5 +1,29 @@
 function [ T, V ] = IS( X, K, iter )
 
+% Get size
+[I,J] = size( X );
+
+% random initialization
+T = rand( I, K );
+V = rand( K, J );
+
+% avoid vibration 
+Xf = T * V;
+up = 0;
+low = 0;
+
+for i=1:I
+  for j=1:J
+    up = up + ( X(i,j) * Xf(i,j) );
+    low = low + ( Xf(i,j) * Xf(i,j) );
+  end
+end
+
+cf = sqrt( up / low );
+T = T * cf;
+V = V * cf;
+Xf = Xf * cf * cf;
+
 % Iteration
 for loop=1:iter
   % create new variables

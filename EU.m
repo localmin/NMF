@@ -1,38 +1,65 @@
-function [ T, V ] = EU( X, K, itr, I, J )
+function [ T, V ] = EU( X, itr, K )
+
+% Get size
+[I,J] = size( X );
+
+% random initialization
+T = rand( I, K );
+V = rand( K, J );
+
+% avoid vibration 
+Xf = T * V;
+up = 0;
+low = 0;
+
+for i=1:I
+  for j=1:J
+    up = up + ( X(i,j) * Xf(i,j) );
+    low = low + ( Xf(i,j) * Xf(i,j) );
+  end
+end
+
+cf = sqrt( up / low );
+T = T * cf;
+V = V * cf;
+Xf = Xf * cf * cf;
 
 % Iteration
-for loop=1:itr
-  % create new variables
+for lp=1:itr
+
   tmpT = T;
   tmpV = V;
+  
   % update T
-  for i=1:R
+  for i=1:I
     for k=1:K
-      upper = 0;
-      lower = 0;
-      for j=1:C
-        upper = upper + V(k,j) * X(i,j);
-        lower = lower + V(k,j) * Xh(i,j);
+      up = 0;
+      low = 0;
+      for j=1:J
+        up = up + V(k,j) * X(i,j);
+        low = low + V(k,j) * Xf(i,j);
       end
-      nT(i,k) = T(i,k) * upper / lower;
+      tmpT(i,k) = T(i,k) * up / low;
     end
   end
+  
   % update V
   for k=1:K
-    for j=1:C
-      upper = 0;
-      lower = 0;
-      for i=1:R
-        upper = upper + T(i,k) * X(i,j);
-        lower = lower + T(i,k) * Xh(i,j);
+    for j=1:J
+      up = 0;
+      low = 0;
+      for i=1:I
+        up = up + T(i,k) * X(i,j);
+        low = low + T(i,k) * Xf(i,j);
       end
-      nV(k,j) = V(k,j) * upper / lower;
+      tmpV(k,j) = V(k,j) * up / low;
     end
   end
-  % replace current variables to new ones
-  V = nV; T = nT;
-  % update \hat{X}
-  Xh = T * V;
+  
+  % replace variable
+  V = tmpV; T = tmpT;
+  % update Xf
+  Xf = T * V;
 
 
   
