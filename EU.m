@@ -1,6 +1,5 @@
 function [ T, V ] = EU( X, itr, K )
 
-% Get size
 [I,J] = size( X );
 
 % random initialization
@@ -24,7 +23,7 @@ T = T * cf;
 V = V * cf;
 Xf = Xf * cf * cf;
 
-% Iteration
+% Iteration by MU
 for lp=1:itr
 
   tmpT = T;
@@ -61,8 +60,6 @@ for lp=1:itr
   % update Xf
   Xf = T * V;
 
-
-  
 end
 
 end

@@ -1,6 +1,5 @@
 function [ T, V ] = IS( X, K, itr )
 
-% Get size
 [I,J] = size( X );
 
 % random initialization
@@ -24,9 +23,9 @@ T = T * cf;
 V = V * cf;
 Xf = Xf * cf * cf;
 
-% Iteration
-for loop=1:itr
-  % create new variables
+% Iteration by MU
+for lp=1:itr
+
   tmpT = T;
   tmpV = V;
   % update T
@@ -34,13 +33,14 @@ for loop=1:itr
     for k=1:K
       up = 0;
       low = 0;
-      for j=1:R
+      for j=1:J
         up = up + (X(i,j)/Xf(i,j))*(V(k,j)/Xf(i,j));
         low = low + V(k,j)/Xf(i,j);
       end
       tmpT(i,k) = T(i,k) * sqrt(up / low);
     end
   end
+  
   % update V
   for k=1:K
     for j=1:J
@@ -53,9 +53,9 @@ for loop=1:itr
       tmpV(k,j) = V(k,j) * sqrt(up / low);
     end
   end
-  % replace current variables to new ones
+  % replace variables
   V = tmpV; T = tmpT;
-  % update \hat{X}
+  % update Xf
   Xf = T * V;
   
 end

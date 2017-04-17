@@ -24,7 +24,7 @@ T = T * cf;
 V = V * cf;
 Xf = Xf * cf * cf;
 
-% Iteration
+% Iteration by MU
 for lp=1:itr
 
   tmpT = T;
@@ -36,8 +36,8 @@ for lp=1:itr
       up = 0;
       low = 0;
       for j=1:J
-        up = up + V(k,j) * X(i,j);
-        low = low + V(k,j) * Xf(i,j);
+        up = up + V(k,j) * (X(i,j)/Xf(i,j));
+        low = low + V(k,j);
       end
       tmpT(i,k) = T(i,k) * up / low;
     end
@@ -49,8 +49,8 @@ for lp=1:itr
       up = 0;
       low = 0;
       for i=1:I
-        up = up + T(i,k) * X(i,j);
-        low = low + T(i,k) * Xf(i,j);
+        up = up + T(i,k) * (X(i,j)/Xf(i,j));
+        low = low + T(i,k);
       end
       tmpV(k,j) = V(k,j) * up / low;
     end
