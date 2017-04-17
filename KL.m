@@ -1,4 +1,4 @@
-function [ T, V ] = IS( X, K, itr )
+function [ T, V ] = KL( X, itr, K )
 
 % Get size
 [I,J] = size( X );
@@ -25,38 +25,43 @@ V = V * cf;
 Xf = Xf * cf * cf;
 
 % Iteration
-for loop=1:itr
-  % create new variables
+for lp=1:itr
+
   tmpT = T;
   tmpV = V;
+  
   % update T
   for i=1:I
     for k=1:K
       up = 0;
       low = 0;
-      for j=1:R
-        up = up + (X(i,j)/Xf(i,j))*(V(k,j)/Xf(i,j));
-        low = low + V(k,j)/Xf(i,j);
+      for j=1:J
+        up = up + V(k,j) * X(i,j);
+        low = low + V(k,j) * Xf(i,j);
       end
-      tmpT(i,k) = T(i,k) * sqrt(up / low);
+      tmpT(i,k) = T(i,k) * up / low;
     end
   end
+  
   % update V
   for k=1:K
     for j=1:J
       up = 0;
       low = 0;
       for i=1:I
-        up = up + (X(i,j)/Xf(i,j))*(T(i,k)/Xf(i,j));
-        low = low + T(i,k)/Xf(i,j);
+        up = up + T(i,k) * X(i,j);
+        low = low + T(i,k) * Xf(i,j);
       end
-      tmpV(k,j) = V(k,j) * sqrt(up / low);
+      tmpV(k,j) = V(k,j) * up / low;
     end
   end
-  % replace current variables to new ones
+  
+  % replace variable
   V = tmpV; T = tmpT;
-  % update \hat{X}
+  % update Xf
   Xf = T * V;
+
+
   
 end
 
