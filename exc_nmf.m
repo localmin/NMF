@@ -1,7 +1,7 @@
 clear
 
 % parameter setting
-I = 18; J = 20; % size of observation matrix
+I = 18; J = 30; % size of observation matrix
 K = 4; % number of basis vectors
 itr = 200; % iteration numbers
 
