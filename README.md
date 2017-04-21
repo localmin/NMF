@@ -10,7 +10,7 @@ Using algorithm is multiplicative update rule on Euclid distance(EU),
 KL-divergence & IS(Itakura-Saito) divergence criteirions.
 
 
-##Background of NMF
+## Background of NMF
 
 You should read the following ariticles.
 
@@ -24,7 +24,7 @@ You should read the following ariticles.
 
 ## Usage
 
-'./exc_all.m'
+`./exc_all.m`
 
 ### Default Setting
 
