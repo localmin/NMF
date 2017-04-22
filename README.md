@@ -24,7 +24,7 @@ You should read the following ariticles.
 
 ## Usage
 
-`./exc_all.m`
+`./exc_nmf.m`
 
 ### Default Setting
 
