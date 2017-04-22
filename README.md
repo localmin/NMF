@@ -15,11 +15,11 @@ KL-divergence & IS(Itakura-Saito) divergence criteirions.
 You should read the following ariticles.
 
 * NMF:
-[http://www.nature.com/nature/journal/v401/n6755/abs/401788a0.html]()
+[http://www.nature.com/nature/journal/v401/n6755/abs/401788a0.html](http://www.nature.com/nature/journal/v401/n6755/abs/401788a0.html)
 
 * Multiplicative Update: 
-	- EU,KL [http://papers.nips.cc/paper/1861-algorithms-for-non-negative-matrix-factorization.pdf]()
-	- others(beta-divergence) [http://ieeexplore.ieee.org/abstract/document/5589233/]()
+	- EU,KL [http://papers.nips.cc/paper/1861-algorithms-for-non-negative-matrix-factorization.pdf](http://papers.nips.cc/paper/1861-algorithms-for-non-negative-matrix-factorization.pdf)
+	- others(beta-divergence) [http://ieeexplore.ieee.org/abstract/document/5589233/](http://ieeexplore.ieee.org/abstract/document/5589233/)
 
 
 ## Usage
