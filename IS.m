@@ -1,4 +1,4 @@
-function [ T, V ] = IS( X, K, itr )
+function [ T, V ] = IS( X, itr, K )
 
 [I,J] = size( X );
 
@@ -23,36 +23,33 @@ T = T * cf;
 V = V * cf;
 Xf = Xf * cf * cf;
 
+
+Idn = ones(i,J);
 % Iteration by MU
 for lp=1:itr
 
   tmpT = T;
   tmpV = V;
-  % update T
-  for i=1:I
-    for k=1:K
-      up = 0;
-      low = 0;
-      for j=1:J
-        up = up + (X(i,j)/Xf(i,j))*(V(k,j)/Xf(i,j));
-        low = low + V(k,j)/Xf(i,j);
-      end
-      tmpT(i,k) = T(i,k) * sqrt(up / low);
-    end
-  end
+
+  InXf = Idn ./ Xf;
+  upSS = X ./ Xf;
+
+  upS = upSS .* InXf;
   
-  % update V
   for k=1:K
-    for j=1:J
-      up = 0;
-      low = 0;
-      for i=1:I
-        up = up + (X(i,j)/Xf(i,j))*(T(i,k)/Xf(i,j));
-        low = low + T(i,k)/Xf(i,j);
-      end
-      tmpV(k,j) = V(k,j) * sqrt(up / low);
-    end
+    % update T
+    up = upS * V(k,:)';
+    low = InXf * V(k,:)';
+
+    tmpT(:,k)= T(:,k) .* sqrt(up ./ low);
+
+    % update V
+    up = T(:,k)' * upS;
+    low = T(:,k)'* InXf;
+
+    tmpV(k,:)= V(k,:) .* sqrt(up ./ low);
   end
+
   % replace variables
   V = tmpV; T = tmpT;
   % update Xf
