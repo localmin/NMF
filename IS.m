@@ -24,14 +24,14 @@ V = V * cf;
 Xf = Xf * cf * cf;
 
 
-Idn = ones(i,J);
+One = ones(I,J);
 % Iteration by MU
 for lp=1:itr
 
   tmpT = T;
   tmpV = V;
 
-  InXf = Idn ./ Xf;
+  InXf = One ./ Xf;
   upSS = X ./ Xf;
 
   upS = upSS .* InXf;
