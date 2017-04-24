@@ -12,10 +12,14 @@ sd = rand;
 
 % Euclid distance criterion
 rand( 'seed', sd ); % reset random seed for initialize T & V
-[Te,Ve] = EU( X, itr, K );
+[wrt_EU,Te,Ve] = EU( X, itr, K );
  % KL-divergence criteirion
 rand( 'seed', sd ); 
 [Tk,Vk] = KL( X, itr, K );
 % IS-divergence criteirion
 rand( 'seed', sd );
 [Ti,Vi] = IS( X, itr, K );
+
+% make graph error wrt time 
+make_wrt_grph(wrt_EU);
+

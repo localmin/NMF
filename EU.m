@@ -1,4 +1,10 @@
-function [ T, V ] = EU( X, itr, K )
+function [ wrt, T, V ] = EU( X, itr, K )
+
+tic;
+
+exe_time = 0;
+
+wrt = zeros( itr , 2 );
 
 [I,J] = size( X );
 
@@ -39,7 +45,7 @@ for lp=1:itr
   	tmpT(:,k)= T(:,k) .* (up ./ low);
 
   	% update V
-	up = T(:,k)' * X;
+ 	  up = T(:,k)' * X;
   	low = T(:,k)'* Xf;
 
   	tmpV(k,:)= V(k,:) .* (up ./ low);
@@ -49,7 +55,17 @@ for lp=1:itr
   V = tmpV; T = tmpT;
   % update Xf
   Xf = T * V;
+  
+  
+  exe_time = exe_time + toc;
+  
+  error = norm( X - Xf, 'fro' );
+  
+  wrt(lp,:) = [ exe_time  error ];
+  
+  tic;
 
 end
+
 
 end
