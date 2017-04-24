@@ -1,4 +1,10 @@
-function [ T, V ] = KL( X, itr, K )
+function [ wrt, T, V ] = KL( X, itr, K )
+
+tic;
+
+exe_time = 0;
+
+wrt = zeros( itr, 2 );
 
 % Get size
 [I,J] = size( X );
@@ -24,7 +30,6 @@ T = T * cf;
 V = V * cf;
 Xf = Xf * cf * cf;
 
- 
 One = ones(I,J);
 % Iteration by MU
 for lp=1:itr
@@ -34,7 +39,6 @@ for lp=1:itr
 
   upS = X ./ Xf;
 
-  
   for k=1:K
     % update T
     up = upS * V(k,:)';
@@ -54,7 +58,17 @@ for lp=1:itr
   % update Xf
   Xf = T * V;
 
+  exe_time = exe_time + toc;
+  
+  lg = log( X ./ Xf );
+  %make KL-divergece
+  KL = (X .* lg) - X + Xf;
 
+  error = norm( KL, 1 );
+  
+  wrt(lp,:) = [ exe_time  error ];
+  
+  tic;
   
 end
 

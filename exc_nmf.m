@@ -15,11 +15,10 @@ rand( 'seed', sd ); % reset random seed for initialize T & V
 [wrt_EU,Te,Ve] = EU( X, itr, K );
  % KL-divergence criteirion
 rand( 'seed', sd ); 
-[Tk,Vk] = KL( X, itr, K );
+[wrt_KL,Tk,Vk] = KL( X, itr, K );
 % IS-divergence criteirion
 rand( 'seed', sd );
-[Ti,Vi] = IS( X, itr, K );
+[wrt_IS,Ti,Vi] = IS( X, itr, K );
 
 % make graph error wrt time 
-make_wrt_grph(wrt_EU);
-
+make_wrt_grph( wrt_EU, wrt_KL, wrt_IS );

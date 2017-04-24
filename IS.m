@@ -1,5 +1,12 @@
-function [ T, V ] = IS( X, itr, K )
+function [ wrt, T, V ] = IS( X, itr, K )
 
+tic;
+
+exe_time = 0;
+
+wrt = zeros( itr, 2 );
+
+% get size
 [I,J] = size( X );
 
 % random initialization
@@ -22,7 +29,6 @@ cf = sqrt( up / low );
 T = T * cf;
 V = V * cf;
 Xf = Xf * cf * cf;
-
 
 One = ones(I,J);
 % Iteration by MU
@@ -55,6 +61,16 @@ for lp=1:itr
   % update Xf
   Xf = T * V;
   
+  exe_time = exe_time + toc;
+  
+  % make IS-divergence
+  IS = (X ./ Xf) - log( X ./ Xf ) - One;
+
+  error = norm( IS, 1 );
+  
+  wrt(lp,:) = [ exe_time  error ];
+  
+  tic;
 end
 
 end
