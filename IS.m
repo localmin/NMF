@@ -64,8 +64,8 @@ for lp=1:itr
   exe_time = exe_time + toc;
   
   % make IS-divergence
-  IS = (X ./ Xf) - log( X ./ Xf ) - One;
-
+  is = (X ./ Xf) - log( X ./ Xf ) - One;
+  IS = reshape( is, I*J, 1 );
   error = norm( IS, 1 );
   
   wrt(lp,:) = [ exe_time  error ];
@@ -73,4 +73,4 @@ for lp=1:itr
   tic;
 end
 
-end
+endfunction

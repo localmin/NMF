@@ -60,9 +60,10 @@ for lp=1:itr
 
   exe_time = exe_time + toc;
   
-  lg = log( X ./ Xf );
   %make KL-divergece
-  KL = (X .* lg) - X + Xf;
+  kl = (X .* log(X ./ Xf)) - X + Xf;
+  
+  KL = reshape( kl, I*J, 1 );
 
   error = norm( KL, 1 );
   
@@ -72,4 +73,4 @@ for lp=1:itr
   
 end
 
-end
+endfunction

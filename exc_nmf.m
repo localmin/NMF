@@ -21,4 +21,4 @@ rand( 'seed', sd );
 [wrt_IS,Ti,Vi] = IS( X, itr, K );
 
 % make graph error wrt time 
-make_wrt_grph( wrt_EU, wrt_KL, wrt_IS );
+make_wrt_grph;
