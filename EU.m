@@ -9,8 +9,8 @@ wrt = zeros( itr , 2 );
 [I,J] = size( X );
 
 % random initialization
-T = rand( I, K );
-V = rand( K, J );
+T = abs(randn( I, K ));
+V = abs(randn( K, J ));
 
 % avoid vibration 
 Xf = T * V;

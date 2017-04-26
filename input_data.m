@@ -1,2 +1,5 @@
 % make random non-negative observation matrix
-X = rand( I, K ) * rand ( K, J );
+A =abs(randn( I, K ));
+B =abs(randn( K, J ));
+
+X = A * B;
