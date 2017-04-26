@@ -1,4 +1,3 @@
-%function [ EU, KL, IS ] = make_wrt_grph ( wrt_EU, wrt_KL, wrt_IS )
 
 figure(1)
 plot( wrt_EU(:,1), wrt_EU(:,2), '-r');
@@ -20,6 +19,3 @@ title('evaluate speed of algorithms on IS');
 xlabel('Time[s]');
 ylabel('IS-divergence');
 legend( 'MU' );
-  
-
-%end

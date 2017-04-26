@@ -1,12 +1,8 @@
 clear
 
 parameter_setting;
-I = 18; J = 30; % size of observation matrix
-K = 4; % number of basis vectors
-itr = 200; % iteration numbers
 
-% make random non-negative observation matrix
-X = rand( I, K ) * rand ( K, J );
+input_data;
 
 sd = rand;
 
