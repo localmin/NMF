@@ -14,15 +14,9 @@ V = rand( K, J );
 
 % avoid vibration 
 Xf = T * V;
-up = 0;
-low = 0;
 
-for i=1:I
-  for j=1:J
-    up = up + ( X(i,j) * Xf(i,j) );
-    low = low + ( Xf(i,j) * Xf(i,j) );
-  end
-end
+up = X(:)' * Xf(:);
+low = Xf(:)' * Xf(:);
 
 cf = sqrt( up / low );
 T = T * cf;
