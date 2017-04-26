@@ -36,31 +36,32 @@ You should read the following ariticles.
 
 * initial value setting method of update rules: random non-negative values
 
-You can change these default setting on "exc_all.m"
+You can change these default settings on "parameter_setting.m" like the following,
 
 ```
-% parameter setting
-I = 18; J = 30; % size of observation matrix
-K = 4; % number of basis vectors
-itr = 200; % iteration numbers
-
-% make random non-negative observation matrix
-X = rand( I, J );
+% size of observation matrix
+I = 18; J = 30; 
+% number of basis vectors
+K = 4; 
+% iteration numbers
+itr = 200; 
 ```
+
+Data that you want to use can be also changed on "input_data.m"
 
 Initial value setting can be changed on each functions, "EU.m KL.m & IS.m"
 
 ```
 % random initialization
-T = rand( I, K );
-V = rand( K, J );
+T = abs(randn( I, K ));
+V = abs(randn( K, J ));
 ```
 
 ## Note
 
 Graph( error wrt time ) of KL criteirions vibrates, but I don't have the solution. 
 
-Please tell me the solution if you know it.
+Please tell me the solution if you heve it.
 
 ## Plans of addtional features
 
