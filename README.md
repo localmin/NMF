@@ -56,6 +56,12 @@ T = rand( I, K );
 V = rand( K, J );
 ```
 
+## Note
+
+Graph( error wrt time ) of KL criteirions vibrates, but I don't have the solution. 
+
+Please tell me the solutioin if you know it.
+
 ## Plans of addtional features
 
 - [ ] other alogorithms
@@ -65,7 +71,7 @@ V = rand( K, J );
 	- [ ] CCD ( on KL )
 
 - [ ] results visualization(ex. graph)
-	- [ ] error with regard to time
+	- [ x ] error with regard to time
 	- [ ] final values of cost functions
 	- [ ] Spectrogram of observation, basis &  activation matrix
 
