@@ -18,12 +18,8 @@ Xf = T * V;
 up = 0;
 low = 0;
 
-for i=1:I
-  for j=1:J
-    up = up + ( X(i,j) * Xf(i,j) );
-    low = low + ( Xf(i,j) * Xf(i,j) );
-  end
-end
+up = X(:)' * Xf(:);
+low = Xf(:)' * Xf(:);
 
 cf = sqrt( up / low );
 T = T * cf;
@@ -53,18 +49,16 @@ for lp=1:itr
     tmpV(k,:)= V(k,:) .* (up ./ low);
   end
 
-  % replace variable
+  % replace variables
   V = tmpV; T = tmpT;
   % update Xf
   Xf = T * V;
 
   exe_time = exe_time + toc;
   
-  %make KL-divergece
+  % make KL-divergece
   kl = (X .* log(X ./ Xf)) - X + Xf;
-  
   KL = reshape( kl, I*J, 1 );
-
   error = norm( KL, 1 );
   
   wrt(lp,:) = [ exe_time  error ];

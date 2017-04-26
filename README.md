@@ -60,7 +60,7 @@ V = rand( K, J );
 
 Graph( error wrt time ) of KL criteirions vibrates, but I don't have the solution. 
 
-Please tell me the solutioin if you know it.
+Please tell me the solution if you know it.
 
 ## Plans of addtional features
 
