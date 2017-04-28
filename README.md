@@ -72,7 +72,7 @@ Please tell me the solution if you heve it.
 	- [ ] CCD ( on KL )
 
 - [ ] results visualization(ex. graph)
-	- [ x ] error with regard to time
+	- [x] error with regard to time
 	- [ ] final values of cost functions
 	- [ ] Spectrogram of observation, basis &  activation matrix
 
