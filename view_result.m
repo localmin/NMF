@@ -19,3 +19,7 @@ title('evaluate speed of algorithms on IS');
 xlabel('Time[s]');
 ylabel('IS-divergence');
 legend( 'MU' );
+
+printf( "last value[EU] = %f\n", wrt_EU(itr,2) );
+printf( "last value[KL] = %f\n", wrt_KL(itr,2) );
+printf( "last value[IS] = %f\n", wrt_IS(itr,2) );
