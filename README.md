@@ -73,9 +73,9 @@ Please tell me the solution if you heve it.
 
 - [ ] results visualization(ex. graph)
 	- [x] error with regard to time
-	- [ ] final values of cost functions
+	- [x] final values of cost functions & relative error of NMF
 	- [ ] Spectrogram of observation, basis &  activation matrix
 
 - [ ] speed up
 	- [ ] mex 
-	- [ ] brush up alogorithms(ex. using inner product)
+	- [ ] brush up alogorithms
