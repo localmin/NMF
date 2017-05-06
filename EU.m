@@ -29,21 +29,11 @@ for lp=1:itr
   tmpT = T;
   tmpV = V;
  
-
-  for k=1:K
-  	% update T
-
-  	up = X * V(k,:)';
-  	low = Xf * V(k,:)';
-
-  	tmpT(:,k)= T(:,k) .* (up ./ low);
-
-  	% update V
- 	  up = T(:,k)' * X;
-  	low = T(:,k)'* Xf;
-
-  	tmpV(k,:)= V(k,:) .* (up ./ low);
-  end
+  % update T
+  tmpT = T .* ((X * V') ./ (Xf * V'));
+  	
+  % update V
+ 	tmpV = V .* ((T' * X) ./ (T' * Xf));
 
   % replace variable
   V = tmpV; T = tmpT;
