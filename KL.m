@@ -30,12 +30,9 @@ One = ones(I,J);
 % Iteration by MU
 for lp=1:itr
 
-  tmpT = T;
-  tmpV = V;
-
   tmpT = T.*( ((X./max(Xf,1e-12))*V') ./repmat(sum(V,2)',I,1));
 
-  tmpV = V.*( (T'*(X./max(Xf,1e-12))) ./repmat(sum(V,1)',1,J));
+  tmpV = V.*( (T'*(X./max(Xf,1e-12))) ./repmat(sum(T,1)',1,J));
 
   % replace variables
   V = tmpV; T = tmpT;

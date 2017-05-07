@@ -4,7 +4,7 @@ parameter_setting;
 
 input_data;
 
-sd = rand;
+sd = rand *100;
 
 % Euclid distance criterion
 randn( 'seed', sd ); % reset random seed for initialize T & V

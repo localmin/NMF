@@ -15,16 +15,6 @@ V = abs(randn( K, J ));
 
 % avoid vibration 
 Xf = T * V;
-up = 0;
-low = 0;
-
-up = X(:)' * Xf(:);
-low = Xf(:)' * Xf(:);
-
-cf = sqrt( up / low );
-T = T * cf;
-V = V * cf;
-Xf = Xf * cf * cf;
 
 One = ones(I,J);
 % Iteration by MU
