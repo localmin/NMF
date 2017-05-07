@@ -33,25 +33,10 @@ for lp=1:itr
   tmpT = T;
   tmpV = V;
 
-  InXf = One ./ Xf;
-  upSS = X ./ Xf;
-
-  upS = upSS .* InXf;
+  tmpT = T.*( ((X.*max(1e-12,Xf).^-2)*V')./(max(1e-12,Xf).^-1*V') );
+		
+	tmpV = V.*( (T'*(X.*max(1e-12,Xf).^-2))./(T'*max(1e-12,Xf).^-1) );
   
-  for k=1:K
-    % update T
-    up = upS * V(k,:)';
-    low = InXf * V(k,:)';
-
-    tmpT(:,k)= T(:,k) .* sqrt(up ./ low);
-
-    % update V
-    up = T(:,k)' * upS;
-    low = T(:,k)'* InXf;
-
-    tmpV(k,:)= V(k,:) .* sqrt(up ./ low);
-  end
-
   % replace variables
   V = tmpV; T = tmpT;
   % update Xf
