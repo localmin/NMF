@@ -57,12 +57,6 @@ T = abs(randn( I, K ));
 V = abs(randn( K, J ));
 ```
 
-## Note
-
-Graph( error wrt time ) of KL criteirions vibrates, but I don't have the solution. 
-
-Please tell me the solution if you heve it.
-
 ## Plans of addtional features
 
 - [ ] other alogorithms
