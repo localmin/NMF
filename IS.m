@@ -30,23 +30,18 @@ One = ones(I,J);
 % Iteration by MU
 for lp=1:itr
 
-  tmpT = T;
-  tmpV = V;
-
-  tmpT = T.*( ((X.*max(1e-12,Xf).^-2)*V')./(max(1e-12,Xf).^-1*V') );
-		
-	tmpV = V.*( (T'*(X.*max(1e-12,Xf).^-2))./(T'*max(1e-12,Xf).^-1) );
+  T = T.*( ((X.*max(1e-12,Xf).^-2)*V')./(max(1e-12,Xf).^-1*V') );
+	
+  Xf = T * V;	
+	V = V.*( (T'*(X.*max(1e-12,Xf).^-2))./(T'*max(1e-12,Xf).^-1) );
   
-  % replace variables
-  V = tmpV; T = tmpT;
   % update Xf
   Xf = T * V;
   
   exe_time = exe_time + toc;
   
   % make IS-divergence
-  is = (X ./ Xf) - log( X ./ Xf ) - One;
-  IS = reshape( is, I*J, 1 );
+  IS = sum(sum(max(0,max(1e-12,X)./max(1e-12,Xf)-log(max(1e-12,X)./max(1e-12,Xf))-1)));
   error = norm( IS, 1 );
   
   wrt(lp,:) = [ exe_time  error ];
