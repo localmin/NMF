@@ -65,10 +65,9 @@ V = abs(randn( K, J ));
 	- [ ] sBCD( on KL & IS )
 	- [ ] CCD ( on KL )
 
-- [ ] results visualization(ex. graph)
+- [x] results visualization(ex. graph)
 	- [x] error with regard to time
 	- [x] final values of cost functions & relative error of NMF
-	- [ ] Spectrogram of observation, basis &  activation matrix
 
 - [ ] speed up
 	- [ ] mex 
