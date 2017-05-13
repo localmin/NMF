@@ -20,19 +20,17 @@ One = ones(I,J);
 % Iteration by MU
 for lp=1:itr
 
-  T = T.*( ((X./max(Xf,1e-12))*V') ./repmat(sum(V,2)',I,1));
+  T = T.*( ((X./Xf*V') ./repmat(sum(V,2)',I,1)));
   
   Xf = T * V;
-  V = V.*( (T'*(X./max(Xf,1e-12))) ./repmat(sum(T,1)',1,J));
+  V = V.*( (T'*(X./Xf)) ./repmat(sum(T,1)',1,J));
 
-  % update Xf
   Xf = T * V;
 
   exe_time = exe_time + toc;
   
   % make KL-divergece
-  KL = sum(sum(max(0,X.*log((X+1e-64)./(Xf+1e-64))-X+Xf)));
-  error = norm( KL, 1 );
+  error = sum(sum(X.*log(X./Xf)-X+Xf));
   
   wrt(lp,:) = [ exe_time  error ];
   
