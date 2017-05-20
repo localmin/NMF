@@ -28,6 +28,9 @@ You should read the following ariticles.
 
 ### Default Setting
 
+* This default program execute a simulation by real number. If you want to deal with real data, change 
+codes, for example, "parameter_setting.m", "input_data.m" etc, for your use.
+
 * size of random non-negative observation matrix: (18,30)
 
 * numbers of basis vectors: 4
