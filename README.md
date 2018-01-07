@@ -75,3 +75,6 @@ V = abs(randn( K, J ));
 - [ ] speed up
 	- [ ] mex 
 	- [x] brush up alogorithms
+
+
+This code is provided without liability and warranty.
