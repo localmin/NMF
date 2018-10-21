@@ -7,12 +7,12 @@ Non-negative Matrix Factorization(NMF) by multiplicative update on Octave.
 You can execute NMF easily on Octave(of course MATLAB).
 
 Using algorithm is multiplicative update rule on Euclid distance(EU), 
-KL-divergence & IS(Itakura-Saito) divergence criteirions.
+KL-divergence & IS(Itakura-Saito) divergence criterions.
 
 
 ## Background of NMF
 
-You should read the following ariticles.
+You should read the following articles.
 
 * NMF:
 [http://www.nature.com/nature/journal/v401/n6755/abs/401788a0.html](http://www.nature.com/nature/journal/v401/n6755/abs/401788a0.html)
@@ -29,7 +29,7 @@ You should read the following ariticles.
 ### Default Setting
 
 * This default program execute a simulation by real number. If you want to deal with real data, change 
-codes, for example, "parameter_setting.m", "input_data.m" etc, for your use.
+codes, for example, "parameter_setting.m", "input_data.m" etc., for your use.
 
 * size of random non-negative observation matrix: (18,30)
 
@@ -60,9 +60,9 @@ T = abs(randn( I, K ));
 V = abs(randn( K, J ));
 ```
 
-## Plans of addtional features
+## Plans of additional features
 
-- [ ] other alogorithms
+- [ ] other algorithms
 	- [ ] GCD( on EU )
 	- [ ] HALS( on EU )
 	- [ ] sBCD( on KL & IS )
@@ -74,7 +74,7 @@ V = abs(randn( K, J ));
 
 - [ ] speed up
 	- [ ] mex 
-	- [x] brush up alogorithms
+	- [x] brush up algorithms
 
 
 This code is provided without liability and warranty.
