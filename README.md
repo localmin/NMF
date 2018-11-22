@@ -1,6 +1,6 @@
 # Non-negative Matrix Factorization(NMF)
 
-Non-negative Matrix Factorization(NMF) by multiplicative update on Octave.
+Non-negative Matrix Factorization(NMF) by multiplicative update & Greedy Coordinate Descent(GCD) on Octave.
 
 ## Features
 
@@ -21,6 +21,8 @@ You should read the following articles.
 	- EU,KL [http://papers.nips.cc/paper/1861-algorithms-for-non-negative-matrix-factorization.pdf](http://papers.nips.cc/paper/1861-algorithms-for-non-negative-matrix-factorization.pdf)
 	- others(beta-divergence) [http://ieeexplore.ieee.org/abstract/document/5589233/](http://ieeexplore.ieee.org/abstract/document/5589233/)
 
+* Greedy Coordinate Descent(GCD) : This algorithm can be used for EU only. 
+	- (https://www.cs.utexas.edu/~cjhsieh/nmf_kdd11.pdf)[https://www.cs.utexas.edu/~cjhsieh/nmf_kdd11.pdf]
 
 ## Usage
 
@@ -63,7 +65,7 @@ V = abs(randn( K, J ));
 ## Plans of additional features
 
 - [ ] other algorithms
-	- [ ] GCD( on EU )
+	- [x] GCD( on EU )
 	- [ ] HALS( on EU )
 	- [ ] sBCD( on KL & IS )
 	- [ ] CCD ( on KL )
