@@ -21,8 +21,8 @@ You should read the following articles.
 	- EU,KL [http://papers.nips.cc/paper/1861-algorithms-for-non-negative-matrix-factorization.pdf](http://papers.nips.cc/paper/1861-algorithms-for-non-negative-matrix-factorization.pdf)
 	- others(beta-divergence) [http://ieeexplore.ieee.org/abstract/document/5589233/](http://ieeexplore.ieee.org/abstract/document/5589233/)
 
-* Greedy Coordinate Descent(GCD) : This algorithm can be used for EU only. 
-	- (https://www.cs.utexas.edu/~cjhsieh/nmf_kdd11.pdf)[https://www.cs.utexas.edu/~cjhsieh/nmf_kdd11.pdf]
+* Greedy Coordinate Descent(GCD) : This algorithm supports  EU only. 
+	- [https://www.cs.utexas.edu/~cjhsieh/nmf_kdd11.pdf](https://www.cs.utexas.edu/~cjhsieh/nmf_kdd11.pdf)
 
 ## Usage
 
