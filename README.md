@@ -1,6 +1,6 @@
 # Non-negative Matrix Factorization(NMF)
 
-Non-negative Matrix Factorization(NMF) by multiplicative update & Greedy Coordinate Descent(GCD) on Octave.
+Non-negative Matrix Factorization(NMF) by multiplicative update & Greedy Coordinate Descent(GCD) written in Octave.
 
 ## Features
 
